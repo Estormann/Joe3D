@@ -1,9 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Joe3D.WPFShell", "Joe3D.WPFShell\Joe3D.WPFShell.csproj", "{7CC90CBC-EFFD-4711-A7FC-0F420A0372FD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Joe3D.WinFrm", "Joe3D.WPFShell\Joe3D.WinFrm.csproj", "{7CC90CBC-EFFD-4711-A7FC-0F420A0372FD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Joe3D.WPF", "Joe3D.WPF\Joe3D.WPF.csproj", "{0D9DCADC-3A5A-43F6-A1A1-5F90426B7A79}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Joe3D.ViewControl", "Joe3D.Control\Joe3D.ViewControl.csproj", "{50955A6A-CECC-4E23-B5CB-0D450F976A5F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Joe3D.Utilities", "Joe3D.Utilities\Joe3D.Utilities.csproj", "{DFAA3919-4759-4910-A9AF-77ABD9B54A59}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Joe3DTests", "Joe3DTests\Joe3DTests.csproj", "{C1523D29-973B-4EE2-9B4C-EB5B4F9DEAB8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +23,22 @@ Global
 		{7CC90CBC-EFFD-4711-A7FC-0F420A0372FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7CC90CBC-EFFD-4711-A7FC-0F420A0372FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7CC90CBC-EFFD-4711-A7FC-0F420A0372FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D9DCADC-3A5A-43F6-A1A1-5F90426B7A79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D9DCADC-3A5A-43F6-A1A1-5F90426B7A79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D9DCADC-3A5A-43F6-A1A1-5F90426B7A79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D9DCADC-3A5A-43F6-A1A1-5F90426B7A79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50955A6A-CECC-4E23-B5CB-0D450F976A5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50955A6A-CECC-4E23-B5CB-0D450F976A5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50955A6A-CECC-4E23-B5CB-0D450F976A5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50955A6A-CECC-4E23-B5CB-0D450F976A5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFAA3919-4759-4910-A9AF-77ABD9B54A59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFAA3919-4759-4910-A9AF-77ABD9B54A59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFAA3919-4759-4910-A9AF-77ABD9B54A59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFAA3919-4759-4910-A9AF-77ABD9B54A59}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1523D29-973B-4EE2-9B4C-EB5B4F9DEAB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1523D29-973B-4EE2-9B4C-EB5B4F9DEAB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1523D29-973B-4EE2-9B4C-EB5B4F9DEAB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1523D29-973B-4EE2-9B4C-EB5B4F9DEAB8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

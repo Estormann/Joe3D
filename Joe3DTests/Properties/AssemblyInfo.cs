@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Joe3D.WinFrm")]
+[assembly: AssemblyTitle("Joe3DTests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Joe3D.WinFrm")]
-[assembly: AssemblyCopyright("Copyright Joe Servo©  2016")]
+[assembly: AssemblyProduct("Joe3DTests")]
+[assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("7cc90cbc-effd-4711-a7fc-0f420a0372fd")]
+[assembly: Guid("c1523d29-973b-4ee2-9b4c-eb5b4f9deab8")]
 
 // Version information for an assembly consists of the following four values:
 //
