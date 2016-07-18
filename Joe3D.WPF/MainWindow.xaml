@@ -14,7 +14,7 @@
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="_File">
                 <MenuItem Header="_Test..." Command="{Binding SetAlpha}"/>
-                <MenuItem Header="_Open..." Command="{Binding FileOpenCommand}"/>
+                <MenuItem Header="_Open..." Command="{Binding OpenFile}"/>
                 <Separator/>
                 <MenuItem Header="E_xit" Command="{Binding FileExitCommand}"/>
             </MenuItem>
@@ -25,45 +25,24 @@
                 <MenuItem Header="_About" Command="{Binding HelpAboutCommand}"/>
             </MenuItem>
         </Menu>
-        <!--<helix:HelixViewport3D x:Name="view1" CameraRotationMode="Trackball" ModelUpDirection="0,0,0">
-            <ModelVisual3D x:Name="root1">
-                <helix:DefaultLights/>
-                <ModelVisual3D Content="{Binding CurrentModel}"/>
-            </ModelVisual3D>
-        </helix:HelixViewport3D>-->
-   
         <WrapPanel Orientation="Vertical">
             <WrapPanel Orientation="Horizontal">
-            <Label Width="50">Alpha</Label>
-            <TextBox Width="50" x:Name="txtAlpha" Text="{Binding Alpha, Mode=TwoWay}" ></TextBox>
+                <Label Width="50">Alpha</Label>
+                <TextBox Width="50" x:Name="txtAlpha" Text="{Binding Alpha, Mode=TwoWay}" ></TextBox>
             </WrapPanel>
             <WrapPanel Orientation="Horizontal">
-            <Label Width="50">Beta</Label>
+                <Label Width="50">Beta</Label>
                 <TextBox Width="50" x:Name="txtBeta" Text="{Binding Beta, Mode=TwoWay}"></TextBox>
             </WrapPanel>
             <WrapPanel Orientation="Horizontal">
                 <Label Width="50">Theta</Label>
                 <TextBox Width="50" x:Name="txtTheta" Text="{Binding Theta, Mode=TwoWay}"></TextBox>
             </WrapPanel>
+            <Slider x:Name="RotationSlider"
+                Minimum="0" Maximum="6.283"
+                Value="{Binding Rotation}"/>
 
         </WrapPanel>
-        <WrapPanel Orientation="Vertical">
-            <WrapPanel Orientation="Horizontal">
-                <Label Width="50">Alpha</Label>
-                <TextBox Width="50" x:Name="txtAlpha2" Text="{Binding Alpha, Mode=TwoWay}" ></TextBox>
-            </WrapPanel>
-            <WrapPanel Orientation="Horizontal">
-                <Label Width="50">Beta</Label>
-                <TextBox Width="50" x:Name="txtBeta2" Text="{Binding Beta, Mode=TwoWay}"></TextBox>
-            </WrapPanel>
-            <WrapPanel Orientation="Horizontal">
-                <Label Width="50">Theta</Label>
-                <TextBox Width="50" x:Name="txtTheta2" Text="{Binding Theta, Mode=TwoWay}"></TextBox>
-            </WrapPanel>
-
-        </WrapPanel>
-        <viewer:Viewer Alpha="{Binding Alpha, Mode=TwoWay}" Beta="{Binding Beta}" Theta="{Binding Theta}">
-            
-        </viewer:Viewer>
+        <viewer:JoeViewPanel/>
     </DockPanel>
 </Window>

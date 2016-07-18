@@ -16,13 +16,14 @@ using System.Windows.Shapes;
 namespace Joe3D.ViewControl
 {
     /// <summary>
-    /// Interaction logic for TESTView.xaml
+    /// Interaction logic for JoeViewPanel.xaml
     /// </summary>
-    public partial class TESTView : UserControl
+    public partial class JoeViewPanel : UserControl
     {
-        public TESTView()
+        public JoeViewPanel()
         {
             InitializeComponent();
+            this.DataContext = new Joe3D.ViewControl.ViewModel.JoeViewPanelVM();
         }
     }
 }

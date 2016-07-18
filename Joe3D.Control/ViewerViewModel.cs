@@ -1,12 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
-using HelixToolkit.Wpf;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Media.Media3D;
 using System.Windows.Threading;
 
@@ -206,7 +200,7 @@ namespace Joe3D.ViewControl
         {
             return await Task.Factory.StartNew(() =>
             {
-                var mi = new ModelImporter();
+                var mi = new Joe3D.Utilities.ModelImporter();
 
                 if (freeze)
                 {

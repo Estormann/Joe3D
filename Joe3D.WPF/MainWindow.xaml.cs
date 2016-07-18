@@ -26,6 +26,7 @@ namespace Joe3D.WPF
             InitializeComponent();
             //this.DataContext = new MainViewModel(new FileDialogService(), view1);
         }
-       
+
+      
     }
 }

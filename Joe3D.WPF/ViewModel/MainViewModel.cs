@@ -3,8 +3,6 @@ using GalaSoft.MvvmLight.Command;
 using HelixToolkit.Wpf;
 using Joe3D.Utilities;
 using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media.Media3D;
 using System.Windows.Threading;
