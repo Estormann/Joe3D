@@ -74,6 +74,7 @@
     <Compile Include="JoeViewPanel.xaml.cs">
       <DependentUpon>JoeViewPanel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="JoeViewPanel_Model.cs" />
     <Compile Include="ViewModel\CameraData.cs" />
     <Compile Include="ViewModel\CameraVM.cs" />
     <Compile Include="ViewModel\JoeViewPanelVM.cs" />

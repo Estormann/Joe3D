@@ -43,6 +43,12 @@
                 Value="{Binding Rotation}"/>
 
         </WrapPanel>
-        <viewer:JoeViewPanel/>
+        <viewer:JoeViewPanel 
+            Alpha="{Binding Alpha}"
+            Beta="{Binding Beta}"
+            Theta="{Binding Theta}"
+            JoeLights="{Binding Lights}"
+            JoeModel="{Binding CurrentModel}">
+        </viewer:JoeViewPanel>
     </DockPanel>
 </Window>

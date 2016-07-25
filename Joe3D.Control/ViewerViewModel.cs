@@ -77,10 +77,41 @@ namespace Joe3D.ViewControl
                 RaisePropertyChanged(() => Theta, oldValue, value, true);
             }
         }
+        /// <summary>
+        /// The <see cref="Distance" /> property's name.
+        /// </summary>
+        public const string DistancePropertyName = "Distance";
+
+        private double _Distance = 10D;
+
+        /// <summary>
+        /// Sets and gets the Distance property.
+        /// Changes to that property's value raise the PropertyChanged event. 
+        /// This property's value is broadcasted by the MessengerInstance when it changes.
+        /// </summary>
+        public double Distance
+        {
+            get
+            {
+                return _Distance;
+            }
+
+            set
+            {
+                if (_Distance == value)
+                {
+                    return;
+                }
+
+                var oldValue = _Distance;
+                _Distance = value;
+                RaisePropertyChanged(() => Distance, oldValue, value, true);
+            }
+        }
         public const string CurrentModelPropertyName = "CurrentModel";
 
-        private Model3D _CurrentModel = null;
-
+        private Model3D _CurrentModel = Joe3D.Utilities.Generator.GetCube();
+        
         public Model3D CurrentModel
         {
             get
@@ -98,6 +129,37 @@ namespace Joe3D.ViewControl
                 var oldValue = _CurrentModel;
                 _CurrentModel = value;
                 RaisePropertyChanged(() => CurrentModel, oldValue, value, true);
+            }
+        }
+        /// <summary>
+        /// The <see cref="Lights" /> property's name.
+        /// </summary>
+        public const string LightsPropertyName = "Lights";
+
+        private Model3DGroup _Lights = Joe3D.Utilities.Generator.GetLight();
+
+        /// <summary>
+        /// Sets and gets the Lights property.
+        /// Changes to that property's value raise the PropertyChanged event. 
+        /// This property's value is broadcasted by the MessengerInstance when it changes.
+        /// </summary>
+        public Model3DGroup Lights
+        {
+            get
+            {
+                return _Lights;
+            }
+
+            set
+            {
+                if (_Lights == value)
+                {
+                    return;
+                }
+
+                var oldValue = _Lights;
+                _Lights = value;
+                RaisePropertyChanged(() => Lights, oldValue, value, true);
             }
         }
         #endregion

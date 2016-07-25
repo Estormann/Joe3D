@@ -16,14 +16,14 @@ namespace Joe3D.ViewControl.ViewModel
                 UpDirection = new Vector3D(0, 1, 0),
                 LookDirection = new Vector3D(-1, -1, -1)
             };
-            this.Lights = InitializeLights();
-            this.Model = Joe3D.Utilities.Generator.GetCube();
+            //this.Lights = InitializeLights();
+            //this.Model = initializeModel();
         }
         private void AlphaChanged(float alpha)
         {
 
         }
-        private Model3DGroup initializeModel()
+        private Model3D initializeModel()
         {
             return Joe3D.Utilities.Generator.GetCube();
         }
@@ -107,14 +107,14 @@ namespace Joe3D.ViewControl.ViewModel
         /// </summary>
         public const string ModelPropertyName = "3DModel";
 
-        private Model3DGroup _Model;
+        private Model3D _Model;
 
         /// <summary>
         /// Sets and gets the 3DModel property.
         /// Changes to that property's value raise the PropertyChanged event. 
         /// This property's value is broadcasted by the MessengerInstance when it changes.
         /// </summary>
-        public Model3DGroup Model
+        public Model3D Model
         {
             get
             {

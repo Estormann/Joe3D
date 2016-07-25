@@ -10,7 +10,7 @@ namespace Joe3D.Utilities
 {
     public static class Generator
     {
-        public  static Model3DGroup GetCube()
+        public static Model3D GetCube()
         {
             GeometryModel3D Cube1 = new GeometryModel3D();
             MeshGeometry3D cubeMesh = GetMeshCube();
@@ -28,7 +28,7 @@ namespace Joe3D.Utilities
             camera.UpDirection = new Vector3D(0, 1, 0);
             camera.NearPlaneDistance = 1;
             camera.FarPlaneDistance = 10;
-            
+
             //Lighting
             DirectionalLight light = new DirectionalLight(Colors.White, new Vector3D(-3, -4, -5));
             //ModelGroup
@@ -86,5 +86,6 @@ namespace Joe3D.Utilities
             cube.TriangleIndices = getTriangles(getindices());
             return cube;
         }
-        }
+        
+    }
 }

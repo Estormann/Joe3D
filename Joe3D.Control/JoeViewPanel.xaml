@@ -6,16 +6,18 @@
              xmlns:local="clr-namespace:Joe3D.ViewControl"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Viewport3D ClipToBounds="True" Width="150" Height="150" Canvas.Left="0" Canvas.Top="10">
+    <Viewport3D x:Name="JoeView" 
+                ClipToBounds="True" 
+                Width="150" 
+                Height="150" 
+                Canvas.Left="0" 
+                Canvas.Top="10">
         <Viewport3D.Camera>
-            <PerspectiveCamera x:Name="camera"
-                Position="{Binding Camera.Position}"
-                LookDirection="{Binding Camera.LookDirection}"
-                UpDirection="{Binding Camera.UpDirection}"/>
+            <PerspectiveCamera x:Name="Camera" />
         </Viewport3D.Camera>
         <Viewport3D.Children>
-            <ModelVisual3D Content="{Binding Lights}"/>
-            <ModelVisual3D Content="{Binding Model}"/>
+            <ModelVisual3D x:Name="Lights" />
+            <ModelVisual3D x:Name="Model"/>
         </Viewport3D.Children>
     </Viewport3D>
 </UserControl>
