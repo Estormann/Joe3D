@@ -38,8 +38,8 @@ namespace Joe3D.WPF.ViewModel
         private readonly IHelixViewport3D viewport;
         private readonly Dispatcher dispatcher;
         private string _CurrentModelPath;
-        private string applicationTitle;
-        private double expansion;
+        //private string applicationTitle;
+        //private double expansion;
         private Model3D currentModel;
         #endregion
 

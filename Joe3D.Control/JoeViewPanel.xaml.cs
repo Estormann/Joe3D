@@ -29,7 +29,6 @@ namespace Joe3D.ViewControl
             InitializeCamera();
             InitModel();
             InitLights();
-            //this.DataContext = new Joe3D.ViewControl.ViewModel.JoeViewPanelVM();
         }
 
         private void InitLights()

@@ -74,13 +74,7 @@
     <Compile Include="JoeViewPanel.xaml.cs">
       <DependentUpon>JoeViewPanel.xaml</DependentUpon>
     </Compile>
-    <Compile Include="JoeViewPanel_Model.cs" />
-    <Compile Include="ViewModel\CameraData.cs" />
-    <Compile Include="ViewModel\CameraVM.cs" />
-    <Compile Include="ViewModel\JoeViewPanelVM.cs" />
     <Compile Include="ViewerViewModel.cs" />
-    <Compile Include="ViewModel\MainViewModel.cs" />
-    <Compile Include="ViewModel\ViewModelLocator.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -118,6 +112,9 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ViewModel\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

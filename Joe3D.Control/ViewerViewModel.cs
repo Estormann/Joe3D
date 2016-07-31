@@ -34,7 +34,7 @@ namespace Joe3D.ViewControl
         }
         public const string BetaPropertyName = "Beta";
         private double _Beta = 0.0;
-        private readonly Dispatcher dispatcher;
+        private readonly Dispatcher dispatcher = null;
         public double Beta
         {
             get
