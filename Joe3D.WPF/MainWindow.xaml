@@ -35,18 +35,24 @@
                 <TextBox Width="50" x:Name="txtBeta" Text="{Binding Beta, Mode=TwoWay}"></TextBox>
             </WrapPanel>
             <WrapPanel Orientation="Horizontal">
-                <Label Width="50">Theta</Label>
-                <TextBox Width="50" x:Name="txtTheta" Text="{Binding Theta, Mode=TwoWay}"></TextBox>
+                <Label Width="50">Distance</Label>
+                <TextBox Width="50" x:Name="txtTheta" Text="{Binding Distance, Mode=TwoWay}"></TextBox>
             </WrapPanel>
-            <Slider x:Name="RotationSlider"
-                Minimum="0" Maximum="6.283"
-                Value="{Binding Rotation}"/>
+            <Slider x:Name="DistanceSlider"
+                Minimum="0" Maximum="30"
+                Value="{Binding Distance}"/>
+            <Slider x:Name="AlphaSlider"
+                Minimum="0" Maximum="360"
+                Value="{Binding Alpha}"/>
+            <Slider x:Name="BetaSlider"
+                Minimum="0" Maximum="360"
+                Value="{Binding Beta}"/>
 
         </WrapPanel>
         <viewer:JoeViewPanel 
             Alpha="{Binding Alpha}"
             Beta="{Binding Beta}"
-            Theta="{Binding Theta}"
+            Distance="{Binding Distance}"
             JoeLights="{Binding Lights}"
             JoeModel="{Binding CurrentModel}">
         </viewer:JoeViewPanel>

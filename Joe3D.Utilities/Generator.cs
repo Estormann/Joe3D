@@ -15,7 +15,7 @@ namespace Joe3D.Utilities
             GeometryModel3D Cube1 = new GeometryModel3D();
             MeshGeometry3D cubeMesh = GetMeshCube();
             Cube1.Geometry = cubeMesh;
-            Cube1.Material = new DiffuseMaterial(new SolidColorBrush(Colors.Red));
+            Cube1.Material = new DiffuseMaterial(new SolidColorBrush(Colors.Green));
             Model3DGroup modelGroup = new Model3DGroup();
             modelGroup.Children.Add(Cube1);
             return modelGroup;

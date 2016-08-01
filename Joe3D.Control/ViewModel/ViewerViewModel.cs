@@ -77,18 +77,10 @@ namespace Joe3D.ViewControl
                 RaisePropertyChanged(() => Theta, oldValue, value, true);
             }
         }
-        /// <summary>
-        /// The <see cref="Distance" /> property's name.
-        /// </summary>
         public const string DistancePropertyName = "Distance";
 
         private double _Distance = 10D;
 
-        /// <summary>
-        /// Sets and gets the Distance property.
-        /// Changes to that property's value raise the PropertyChanged event. 
-        /// This property's value is broadcasted by the MessengerInstance when it changes.
-        /// </summary>
         public double Distance
         {
             get
@@ -131,9 +123,6 @@ namespace Joe3D.ViewControl
                 RaisePropertyChanged(() => CurrentModel, oldValue, value, true);
             }
         }
-        /// <summary>
-        /// The <see cref="Lights" /> property's name.
-        /// </summary>
         public const string LightsPropertyName = "Lights";
 
         private Model3DGroup _Lights = Joe3D.Utilities.Generator.GetLight();
@@ -163,7 +152,6 @@ namespace Joe3D.ViewControl
             }
         }
         #endregion
-
         #region Commands
         private RelayCommand _OpenFile;
 

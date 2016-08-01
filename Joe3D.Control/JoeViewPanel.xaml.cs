@@ -21,7 +21,7 @@ namespace Joe3D.ViewControl
     /// </summary>
     public partial class JoeViewPanel : UserControl
     {
-        private PerspectiveCamera _Camera;
+        //private PerspectiveCamera _Camera;
         //We are going to maintain an internal Camera View Model
         public JoeViewPanel()
         {
@@ -39,13 +39,57 @@ namespace Joe3D.ViewControl
         {
         }
 
+        public static Vector3D GetCameraLookDirection(Point3D cameraLoc, Point3D Origin)
+        {
+            return GetUnitVector(cameraLoc, Origin);
+        }
+
+        private static Point3D MovePoint2onVector(Point3D Point1, Point3D Point2, double NewDistance)
+        {
+            var UVect = GetUnitVector(Point1, Point2);//get a unit vector from point 1 to Point 2
+            return new Point3D(UVect.X * NewDistance, UVect.Y * NewDistance, UVect.Z * NewDistance);
+        }
+
+        private static double GetVectorDistance(Point3D Point1, Point3D Point2)
+        {
+            //returns a Vector pointing at Point 2 from Point 1
+            var Vect = GetVector(Point1, Point2);
+
+            return Math.Sqrt(Math.Pow(Vect.X, 2) + Math.Pow(Vect.Y, 2) + Math.Pow(Vect.Z, 2));
+        }
+        private static Vector3D GetVector(Point3D Point1, Point3D Point2)
+        {
+            double deltaX = Point2.X - Point1.X;
+            double deltaY = Point2.Y - Point1.Y;
+            double deltaZ = Point2.Z - Point1.Z;
+            return new Vector3D(deltaX,deltaY,deltaZ);
+        }
+        private static Vector3D GetUnitVector(Point3D Point1, Point3D Point2)
+        {
+            //returns a Vector pointing at Point 2 from Point 1
+            var PVect = GetVector(Point1, Point2);
+            double dist = GetVectorDistance(Point1, Point2);
+            Vector3D UnitVector;
+            if (dist != 0)
+            {
+                UnitVector = new Vector3D(PVect.X / dist, PVect.Y / dist, PVect.Z / dist);
+            }
+            else
+            {
+                UnitVector = new Vector3D(0, 0, 0);
+            }
+            return UnitVector;
+        }
         private void InitializeCamera()
         {
-            _Camera = new PerspectiveCamera();
-            _Camera.UpDirection = new Vector3D(0, 1, 0);
-            _Camera.Position = new Point3D(2,2,2);
-            _Camera.LookDirection = new Vector3D(-1, -1, -1);
-            JoeView.Camera = _Camera;
+            Point3D Origin = new Point3D(0, 0, 0);
+            this.Camera = new PerspectiveCamera();
+            this.Camera.FieldOfView = 45;
+            this.Camera.NearPlaneDistance = 1;
+            this.Camera.UpDirection = new Vector3D(0, 1, 0);
+            this.Camera.Position = new Point3D(0,0,5);
+            this.Camera.LookDirection = GetCameraLookDirection(this.Camera.Position, Origin);
+            JoeView.Camera = this.Camera;
         }
         #region Dependency Properties
         #region Alpha
@@ -86,6 +130,17 @@ namespace Joe3D.ViewControl
         );
         private static void OnAlphaChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
+            JoeViewPanel JoeViewPanel = (JoeViewPanel)d;
+            double Distance = JoeViewPanel.Distance;
+            double alpha = (double)e.NewValue;  
+            double beta = JoeViewPanel.Beta;
+            Point3D origin = new Point3D(0, 0, 0);
+            var Camera = JoeViewPanel.Camera;
+            if (Distance >= 1)
+            {
+                Camera.Position = GetNewPosition(alpha, beta, Distance);
+            }
+            Camera.LookDirection = GetCameraLookDirection(Camera.Position, origin);
         }
         #endregion
         #region Beta
@@ -126,47 +181,58 @@ namespace Joe3D.ViewControl
         );
         private static void OnBetaChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
+            JoeViewPanel JoeViewPanel = (JoeViewPanel)d;
+            double Distance = JoeViewPanel.Distance;
+            double beta = (double)e.NewValue;
+            double alpha = JoeViewPanel.Alpha;
+            Point3D origin = new Point3D(0, 0, 0);
+            var Camera = JoeViewPanel.Camera;
+            if (Distance >= 1)
+            {
+                Camera.Position = GetNewPosition(alpha, beta, Distance);
+            }
+            Camera.LookDirection = GetCameraLookDirection(Camera.Position, origin);
         }
         #endregion
         #region Theta
-        /// <summary>
-        /// The <see cref="Theta" /> dependency property's name.
-        /// </summary>
-        public const string ThetaPropertyName = "Theta";
+        ///// <summary>
+        ///// The <see cref="Theta" /> dependency property's name.
+        ///// </summary>
+        //public const string ThetaPropertyName = "Theta";
 
-        /// <summary>
-        /// Gets or sets the value of the <see cref="Theta" />
-        /// property. This is a dependency property.
-        /// </summary>
-        public double Theta
-        {
-            get
-            {
-                return (double)GetValue(ThetaProperty);
-            }
-            set
-            {
-                SetValue(ThetaProperty, value);
-            }
-        }
+        ///// <summary>
+        ///// Gets or sets the value of the <see cref="Theta" />
+        ///// property. This is a dependency property.
+        ///// </summary>
+        //public double Theta
+        //{
+        //    get
+        //    {
+        //        return (double)GetValue(ThetaProperty);
+        //    }
+        //    set
+        //    {
+        //        SetValue(ThetaProperty, value);
+        //    }
+        //}
 
-        /// <summary>
-        /// Identifies the <see cref="Theta" /> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty ThetaProperty = DependencyProperty.Register(
-            ThetaPropertyName,
-            typeof(double),
-            typeof(JoeViewPanel),
-            new FrameworkPropertyMetadata
-            (
-                0.0D,
-                FrameworkPropertyMetadataOptions.AffectsRender,
-                new PropertyChangedCallback(OnThetaChanged)
-            )
-        );
-        private static void OnThetaChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-        }
+        ///// <summary>
+        ///// Identifies the <see cref="Theta" /> dependency property.
+        ///// </summary>
+        //public static readonly DependencyProperty ThetaProperty = DependencyProperty.Register(
+        //    ThetaPropertyName,
+        //    typeof(double),
+        //    typeof(JoeViewPanel),
+        //    new FrameworkPropertyMetadata
+        //    (
+        //        0.0D,
+        //        FrameworkPropertyMetadataOptions.AffectsRender,
+        //        new PropertyChangedCallback(OnThetaChanged)
+        //    )
+        //);
+        //private static void OnThetaChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        //{
+        //}
         #endregion
         #region Distance
         /// <summary>
@@ -206,8 +272,17 @@ namespace Joe3D.ViewControl
         );
         private static void OnDistanceChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            JoeViewPanel JoeView = (JoeViewPanel)d;
+            JoeViewPanel JoeViewPanel = (JoeViewPanel)d;
             double newCameraDistance = (double)e.NewValue;
+            double alpha = JoeViewPanel.Alpha;
+            double beta = JoeViewPanel.Beta;
+            Point3D origin = new Point3D(0, 0, 0);
+            var Camera = JoeViewPanel.Camera;
+            if (newCameraDistance >= 1)
+            {
+                Camera.Position = GetNewPosition(alpha,beta,newCameraDistance);
+            }
+            Camera.LookDirection = GetCameraLookDirection(Camera.Position, origin);
         }
         #endregion
         #region Model
@@ -306,12 +381,15 @@ namespace Joe3D.ViewControl
         #endregion
         #endregion
 
-
-
-
-
-
-
-        
+        private static Point3D GetNewPosition(double alpha, double beta, double Distance)
+        {
+            //convert input to radians
+            double alpharad = alpha * Math.PI / 180;
+            double betarad = beta * Math.PI / 180;
+            double x = Distance * Math.Sin(alpharad) * Math.Cos(betarad);
+            double y = Distance * Math.Sin(alpharad) * Math.Sin(betarad);
+            double z = Distance * Math.Cos(alpharad);
+            return new Point3D(x, y, z);
+        }
     }
 }
