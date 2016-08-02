@@ -8,8 +8,6 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <Viewport3D x:Name="JoeView" 
                 ClipToBounds="True" 
-                Width="150" 
-                Height="150" 
                 Canvas.Left="0" 
                 Canvas.Top="10">
         <Viewport3D.Camera>

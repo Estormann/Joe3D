@@ -1,6 +1,7 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Media.Media3D;
 using System.Windows.Threading;
 
@@ -121,6 +122,7 @@ namespace Joe3D.ViewControl
                 var oldValue = _CurrentModel;
                 _CurrentModel = value;
                 RaisePropertyChanged(() => CurrentModel, oldValue, value, true);
+                
             }
         }
         public const string LightsPropertyName = "Lights";
@@ -168,12 +170,19 @@ namespace Joe3D.ViewControl
             }
         }
         private const string OpenFileFilter = "3D model files (*.3ds;*.obj;*.lwo;*.stl)|*.3ds;*.obj;*.objz;*.lwo;*.stl";
-        private async void ExecuteOpenFile()
+        //private async void ExecuteOpenFile()
+        //{
+        //    var fds = new Joe3D.Utilities.FileDialogService();
+
+        //    var CurrentModelPath = fds.OpenFileDialog("models", null, OpenFileFilter, ".obj");
+        //    this.CurrentModel = await this.LoadAsync(CurrentModelPath, false);
+        //}
+        private void ExecuteOpenFile()
         {
             var fds = new Joe3D.Utilities.FileDialogService();
 
             var CurrentModelPath = fds.OpenFileDialog("models", null, OpenFileFilter, ".obj");
-            this.CurrentModel = await this.LoadAsync(CurrentModelPath, false);
+            this.CurrentModel = this.Load(CurrentModelPath, false);
         }
 
         private bool CanExecuteOpenFile()
@@ -261,6 +270,19 @@ namespace Joe3D.ViewControl
                 // Alt. 2 - create the model on the UI dispatcher
                 return mi.Load(model3DPath, this.dispatcher);
             });
+        }
+        private  Model3DGroup Load(string model3DPath, bool freeze)
+        {
+                var mi = new Joe3D.Utilities.ModelImporter();
+
+                if (freeze)
+                {
+                    // Alt 1. - freeze the model 
+                    return mi.Load(model3DPath, null, true);
+                }
+
+                // Alt. 2 - create the model on the UI dispatcher
+                return mi.Load(model3DPath, this.dispatcher);
         }
         #endregion
     }

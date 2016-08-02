@@ -22,18 +22,13 @@ namespace Joe3D.Utilities
         }
         public static Model3DGroup GetLight()
         {
-            PerspectiveCamera camera = new PerspectiveCamera();
-            camera.LookDirection = new Vector3D(5, -2, -3);
-            camera.Position = new Point3D(-5, 2, 3);
-            camera.UpDirection = new Vector3D(0, 1, 0);
-            camera.NearPlaneDistance = 1;
-            camera.FarPlaneDistance = 10;
-
             //Lighting
-            DirectionalLight light = new DirectionalLight(Colors.White, new Vector3D(-3, -4, -5));
+            DirectionalLight light = new DirectionalLight(Colors.White, new Vector3D(-1,-1,-1));
+            DirectionalLight light2 = new DirectionalLight(Colors.White, new Vector3D(1,1,1));
             //ModelGroup
             Model3DGroup modelGroup = new Model3DGroup();
             modelGroup.Children.Add(light);
+            modelGroup.Children.Add(light2);
             return modelGroup;
         }
         private static Int32[] getindices()
