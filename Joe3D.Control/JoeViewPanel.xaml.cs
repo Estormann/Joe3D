@@ -92,147 +92,159 @@ namespace Joe3D.ViewControl
             JoeView.Camera = this.Camera;
         }
         #region Dependency Properties
-        #region Alpha
+        #region X
         /// <summary>
-        /// The <see cref="Alpha" /> dependency property's name.
+        /// The <see cref="X" /> dependency property's name.
         /// </summary>
-        public const string AlphaPropertyName = "Alpha";
+        public const string XPropertyName = "X";
 
         /// <summary>
-        /// Gets or sets the value of the <see cref="Alpha" />
+        /// Gets or sets the value of the <see cref="X" />
         /// property. This is a dependency property.
         /// </summary>
-        public double Alpha
+        public double X
         {
             get
             {
-                return (double)GetValue(AlphaProperty);
+                return (double)GetValue(XProperty);
             }
             set
             {
-                SetValue(AlphaProperty, value);
+                SetValue(XProperty, value);
             }
         }
 
         /// <summary>
-        /// Identifies the <see cref="Alpha" /> dependency property.
+        /// Identifies the <see cref="X" /> dependency property.
         /// </summary>
-        public static readonly DependencyProperty AlphaProperty = DependencyProperty.Register(
-            AlphaPropertyName,
+        public static readonly DependencyProperty XProperty = DependencyProperty.Register(
+            XPropertyName,
             typeof(double),
             typeof(JoeViewPanel),
             new FrameworkPropertyMetadata
             (
                 0.0D,
                 FrameworkPropertyMetadataOptions.AffectsRender,
-                new PropertyChangedCallback(OnAlphaChanged)
+                new PropertyChangedCallback(OnXChanged)
             )
         );
-        private static void OnAlphaChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void OnXChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             JoeViewPanel JoeViewPanel = (JoeViewPanel)d;
-            double Distance = JoeViewPanel.Distance;
-            double alpha = (double)e.NewValue;  
-            double beta = JoeViewPanel.Beta;
+            double X = (double)e.NewValue;
+            double Y = JoeViewPanel.Y;
+            double Z = JoeViewPanel.Z;
+            double Distance = Math.Sqrt(Math.Pow(X, 2) + Math.Pow(Y, 2) + Math.Pow(Z, 2));
             Point3D origin = new Point3D(0, 0, 0);
-            var Camera = JoeViewPanel.Camera;
-            if (Distance >= 1)
-            {
-                Camera.Position = GetNewPosition(alpha, beta, Distance);
-            }
-            Camera.LookDirection = GetCameraLookDirection(Camera.Position, origin);
+
+            var RotMatrix = Joe3D.Utilities.Generator.CalculateRotationMatrix(X, Y, Z);
+            MatrixTransform3D trans = new MatrixTransform3D(RotMatrix);
+
+            JoeViewPanel.Model.Transform = trans;
         }
         #endregion
-        #region Beta
+        #region Y
         /// <summary>
-        /// The <see cref="Beta" /> dependency property's name.
+        /// The <see cref="Y" /> dependency property's name.
         /// </summary>
-        public const string BetaPropertyName = "Beta";
+        public const string YPropertyName = "Y";
 
         /// <summary>
-        /// Gets or sets the value of the <see cref="Beta" />
+        /// Gets or sets the value of the <see cref="Y" />
         /// property. This is a dependency property.
         /// </summary>
-        public double Beta
+        public double Y
         {
             get
             {
-                return (double)GetValue(BetaProperty);
+                return (double)GetValue(YProperty);
             }
             set
             {
-                SetValue(BetaProperty, value);
+                SetValue(YProperty, value);
             }
         }
 
         /// <summary>
-        /// Identifies the <see cref="Beta" /> dependency property.
+        /// Identifies the <see cref="Y" /> dependency property.
         /// </summary>
-        public static readonly DependencyProperty BetaProperty = DependencyProperty.Register(
-            BetaPropertyName,
+        public static readonly DependencyProperty YProperty = DependencyProperty.Register(
+            YPropertyName,
             typeof(double),
             typeof(JoeViewPanel),
            new FrameworkPropertyMetadata
             (
                 0.0D,
                 FrameworkPropertyMetadataOptions.AffectsRender,
-                new PropertyChangedCallback(OnBetaChanged)
+                new PropertyChangedCallback(OnYChanged)
             )
         );
-        private static void OnBetaChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void OnYChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             JoeViewPanel JoeViewPanel = (JoeViewPanel)d;
-            double Distance = JoeViewPanel.Distance;
-            double beta = (double)e.NewValue;
-            double alpha = JoeViewPanel.Alpha;
+            double Y = (double)e.NewValue;
+            double X = JoeViewPanel.X;
+            double Z = JoeViewPanel.Z;
+            double Distance = Math.Sqrt(Math.Pow(X, 2) + Math.Pow(Y, 2) + Math.Pow(Z, 2));
             Point3D origin = new Point3D(0, 0, 0);
-            var Camera = JoeViewPanel.Camera;
-            if (Distance >= 1)
-            {
-                Camera.Position = GetNewPosition(alpha, beta, Distance);
-            }
-            Camera.LookDirection = GetCameraLookDirection(Camera.Position, origin);
+
+            var RotMatrix = Joe3D.Utilities.Generator.CalculateRotationMatrix(X, Y, Z);
+            MatrixTransform3D trans = new MatrixTransform3D(RotMatrix);
+
+            JoeViewPanel.Model.Transform = trans;
         }
         #endregion
-        #region Theta
-        ///// <summary>
-        ///// The <see cref="Theta" /> dependency property's name.
-        ///// </summary>
-        //public const string ThetaPropertyName = "Theta";
+        #region Z
+        /// <summary>
+        /// The <see cref="Z" /> dependency property's name.
+        /// </summary>
+        public const string ZPropertyName = "Z";
 
-        ///// <summary>
-        ///// Gets or sets the value of the <see cref="Theta" />
-        ///// property. This is a dependency property.
-        ///// </summary>
-        //public double Theta
-        //{
-        //    get
-        //    {
-        //        return (double)GetValue(ThetaProperty);
-        //    }
-        //    set
-        //    {
-        //        SetValue(ThetaProperty, value);
-        //    }
-        //}
+        /// <summary>
+        /// Gets or sets the value of the <see cref="Z" />
+        /// property. This is a dependency property.
+        /// </summary>
+        public double Z
+        {
+            get
+            {
+                return (double)GetValue(ZProperty);
+            }
+            set
+            {
+                SetValue(ZProperty, value);
+            }
+        }
 
-        ///// <summary>
-        ///// Identifies the <see cref="Theta" /> dependency property.
-        ///// </summary>
-        //public static readonly DependencyProperty ThetaProperty = DependencyProperty.Register(
-        //    ThetaPropertyName,
-        //    typeof(double),
-        //    typeof(JoeViewPanel),
-        //    new FrameworkPropertyMetadata
-        //    (
-        //        0.0D,
-        //        FrameworkPropertyMetadataOptions.AffectsRender,
-        //        new PropertyChangedCallback(OnThetaChanged)
-        //    )
-        //);
-        //private static void OnThetaChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        //{
-        //}
+        /// <summary>
+        /// Identifies the <see cref="Z" /> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ZProperty = DependencyProperty.Register(
+            ZPropertyName,
+            typeof(double),
+            typeof(JoeViewPanel),
+            new FrameworkPropertyMetadata
+            (
+                0.0D,
+                FrameworkPropertyMetadataOptions.AffectsRender,
+                new PropertyChangedCallback(OnZChanged)
+            )
+        );
+        private static void OnZChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            JoeViewPanel JoeViewPanel = (JoeViewPanel)d;
+            double Z = (double)e.NewValue;
+            double X = JoeViewPanel.X;
+            double Y = JoeViewPanel.Y;
+            double Distance = Math.Sqrt(Math.Pow(X, 2) + Math.Pow(Y, 2) + Math.Pow(Z, 2));
+            Point3D origin = new Point3D(0, 0, 0);
+
+            var RotMatrix = Joe3D.Utilities.Generator.CalculateRotationMatrix(X, Y, Z);
+            MatrixTransform3D trans = new MatrixTransform3D(RotMatrix);
+
+            JoeViewPanel.Model.Transform = trans;
+        }
+
         #endregion
         #region Distance
         /// <summary>
@@ -274,13 +286,12 @@ namespace Joe3D.ViewControl
         {
             JoeViewPanel JoeViewPanel = (JoeViewPanel)d;
             double newCameraDistance = (double)e.NewValue;
-            double alpha = JoeViewPanel.Alpha;
-            double beta = JoeViewPanel.Beta;
             Point3D origin = new Point3D(0, 0, 0);
             var Camera = JoeViewPanel.Camera;
             if (newCameraDistance >= 1)
             {
-                Camera.Position = GetNewPosition(alpha,beta,newCameraDistance);
+                //Keeping camera on Z Axis
+                Camera.Position = new Point3D(0,0,newCameraDistance);
             }
             Camera.LookDirection = GetCameraLookDirection(Camera.Position, origin);
         }

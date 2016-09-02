@@ -34,12 +34,12 @@ namespace Joe3D.WPF.ViewModel
             ////if (ViewModelBase.IsInDesignModeStatic)
             ////{
             ////    // Create design time view services and models
-            ////    SimpleIoc.Default.Register<IDataService, DesignDataService>();
+            ////    SimpleIoc.Default.Register<IModelService, DesignModelService>();
             ////}
             ////else
             ////{
             ////    // Create run time view services and models
-            ////    SimpleIoc.Default.Register<IDataService, DataService>();
+            ////    SimpleIoc.Default.Register<IModelService, ModelService>();
             ////}
 
             SimpleIoc.Default.Register<Joe3D.ViewControl.ViewerViewModel>();

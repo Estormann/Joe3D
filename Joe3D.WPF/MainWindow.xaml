@@ -13,46 +13,49 @@
     <DockPanel LastChildFill="True">
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="_File">
-                <MenuItem Header="_Test..." Command="{Binding SetAlpha}"/>
                 <MenuItem Header="_Open..." Command="{Binding OpenFile}"/>
-                <Separator/>
-                <MenuItem Header="E_xit" Command="{Binding FileExitCommand}"/>
-            </MenuItem>
-            <MenuItem Header="_View">
-                <MenuItem Header="_Zoom extents" Command="{Binding ViewZoomExtentsCommand}"/>
             </MenuItem>
             <MenuItem Header="_Help">
                 <MenuItem Header="_About" Command="{Binding HelpAboutCommand}"/>
             </MenuItem>
         </Menu>
         <WrapPanel Orientation="Vertical">
+            <Label>Rotate about the following Axes:</Label>
             <WrapPanel Orientation="Horizontal">
-                <Label Width="50">Alpha</Label>
-                <TextBox Width="50" x:Name="txtAlpha" Text="{Binding Alpha, Mode=TwoWay}" ></TextBox>
+                <Label Width="50">X</Label>
+                <TextBox Width="50" x:Name="txtX" Text="{Binding X, Mode=TwoWay}" ></TextBox>
             </WrapPanel>
             <WrapPanel Orientation="Horizontal">
-                <Label Width="50">Beta</Label>
-                <TextBox Width="50" x:Name="txtBeta" Text="{Binding Beta, Mode=TwoWay}"></TextBox>
+                <Label Width="50">Y</Label>
+                <TextBox Width="50" x:Name="txtY" Text="{Binding Y, Mode=TwoWay}"></TextBox>
+            </WrapPanel>
+            <WrapPanel Orientation="Horizontal">
+                <Label Width="50">Z</Label>
+                <TextBox Width="50" x:Name="txtZ" Text="{Binding Z, Mode=TwoWay}"></TextBox>
             </WrapPanel>
             <WrapPanel Orientation="Horizontal">
                 <Label Width="50">Distance</Label>
-                <TextBox Width="50" x:Name="txtTheta" Text="{Binding Distance, Mode=TwoWay}"></TextBox>
+                <TextBox Width="50" x:Name="txtDist" Text="{Binding Distance, Mode=TwoWay}"></TextBox>
             </WrapPanel>
-            <Slider x:Name="DistanceSlider"
-                Minimum="0" Maximum="30"
+            <Slider x:Name="XSlider"
+                Minimum="0" Maximum="360"
+                Value="{Binding X}"/>
+            <Slider x:Name="YSlider"
+                Minimum="0" Maximum="360"
+                Value="{Binding Y}"/>
+            <Slider x:Name="ZSlider"
+                Minimum="0" Maximum="360"
+                Value="{Binding Z}"/>
+            <Slider x:Name="DistSlider"
+                Minimum="4" Maximum="100"
                 Value="{Binding Distance}"/>
-            <Slider x:Name="AlphaSlider"
-                Minimum="0" Maximum="360"
-                Value="{Binding Alpha}"/>
-            <Slider x:Name="BetaSlider"
-                Minimum="0" Maximum="360"
-                Value="{Binding Beta}"/>
 
         </WrapPanel>
-        <viewer:JoeViewPanel 
-            Alpha="{Binding Alpha}"
-            Beta="{Binding Beta}"
+        <viewer:JoeViewPanel x:Name="ViewPanel"
             Distance="{Binding Distance}"
+            X="{Binding X}"
+            Y="{Binding Y}"
+            Z="{Binding Z}"
             JoeLights="{Binding Lights}"
             JoeModel="{Binding CurrentModel}">
         </viewer:JoeViewPanel>

@@ -69,8 +69,6 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interfaces\ICameraData.cs" />
-    <Compile Include="Interfaces\IMeshData.cs" />
     <Compile Include="JoeViewPanel.xaml.cs">
       <DependentUpon>JoeViewPanel.xaml</DependentUpon>
     </Compile>

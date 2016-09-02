@@ -117,6 +117,18 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Handgun\Handgun_3ds\Handgun.3ds" />
+    <None Include="Handgun\Handgun_DAE\Handgun_Game_Blender Gamer Engine.dae" />
+    <None Include="Handgun\Handgun_DXF\Handgun_Game_Blender Gamer Engine.dxf" />
+    <None Include="Handgun\Handgun_FBX\Handgun_Game_Blender Gamer Engine.fbx" />
+    <None Include="Handgun\Handgun_Game_Blender Gamer Engine.blend" />
+    <None Include="Handgun\Handgun_Game_Cycles.blend" />
+    <None Include="Handgun\Handgun_Obj\Handgun_obj.mtl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Handgun\Handgun_Obj\Handgun_obj.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -136,6 +148,67 @@
       <Project>{dfaa3919-4759-4910-a9af-77abd9b54a59}</Project>
       <Name>Joe3D.Utilities</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Handgun\Bilder\45 ACP Smith and Wesson %281%29.jpg" />
+    <Resource Include="Handgun\Bilder\45 ACP Smith and Wesson %281%29.PNG" />
+    <Resource Include="Handgun\Bilder\45 ACP Smith and Wesson %2810%29.PNG" />
+    <Resource Include="Handgun\Bilder\45 ACP Smith and Wesson %2811%29.PNG" />
+    <Resource Include="Handgun\Bilder\45 ACP Smith and Wesson %2812%29.PNG" />
+    <Resource Include="Handgun\Bilder\45 ACP Smith and Wesson %2813%29.PNG" />
+    <Resource Include="Handgun\Bilder\45 ACP Smith and Wesson %282%29.jpg" />
+    <Resource Include="Handgun\Bilder\45 ACP Smith and Wesson %282%29.PNG" />
+    <Resource Include="Handgun\Bilder\45 ACP Smith and Wesson %283%29.jpg" />
+    <Resource Include="Handgun\Bilder\45 ACP Smith and Wesson %283%29.PNG" />
+    <Resource Include="Handgun\Bilder\45 ACP Smith and Wesson %284%29.jpg" />
+    <Resource Include="Handgun\Bilder\45 ACP Smith and Wesson %284%29.PNG" />
+    <Resource Include="Handgun\Bilder\45 ACP Smith and Wesson %285%29.jpg" />
+    <Resource Include="Handgun\Bilder\45 ACP Smith and Wesson %285%29.PNG" />
+    <Resource Include="Handgun\Bilder\45 ACP Smith and Wesson %286%29.jpg" />
+    <Resource Include="Handgun\Bilder\45 ACP Smith and Wesson %286%29.PNG" />
+    <Resource Include="Handgun\Bilder\45 ACP Smith and Wesson %287%29.PNG" />
+    <Resource Include="Handgun\Bilder\45 ACP Smith and Wesson %288%29.PNG" />
+    <Resource Include="Handgun\Bilder\45 ACP Smith and Wesson %289%29.PNG" />
+    <Resource Include="Handgun\Handgun_3ds\textures\handgun_C.jpg" />
+    <Resource Include="Handgun\Handgun_3ds\textures\handgun_Fire.png" />
+    <Resource Include="Handgun\Handgun_3ds\textures\handgun_N.jpg" />
+    <Resource Include="Handgun\Handgun_3ds\textures\handgun_S.jpg" />
+    <Resource Include="Handgun\Handgun_DAE\handgun_C.jpg" />
+    <Resource Include="Handgun\Handgun_DAE\handgun_Fire.png" />
+    <Resource Include="Handgun\Handgun_DAE\handgun_N.jpg" />
+    <Resource Include="Handgun\Handgun_DAE\handgun_S.jpg" />
+    <Resource Include="Handgun\Handgun_DXF\textures\handgun_C.jpg" />
+    <Resource Include="Handgun\Handgun_DXF\textures\handgun_Fire.png" />
+    <Resource Include="Handgun\Handgun_DXF\textures\handgun_N.jpg" />
+    <Resource Include="Handgun\Handgun_DXF\textures\handgun_S.jpg" />
+    <Resource Include="Handgun\Handgun_FBX\textures\handgun_C.jpg" />
+    <Resource Include="Handgun\Handgun_FBX\textures\handgun_Fire.png" />
+    <Resource Include="Handgun\Handgun_FBX\textures\handgun_N.jpg" />
+    <Resource Include="Handgun\Handgun_FBX\textures\handgun_S.jpg" />
+    <None Include="Handgun\Handgun_Obj\textures\handgun_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Handgun\Handgun_Obj\textures\handgun_Fire.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Handgun\Handgun_Obj\textures\handgun_N.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Handgun\Handgun_Obj\textures\handgun_S.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Handgun\textures\handgun_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Handgun\textures\handgun_Fire.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Handgun\textures\handgun_N.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Handgun\textures\handgun_S.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

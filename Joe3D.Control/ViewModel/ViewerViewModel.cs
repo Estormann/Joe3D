@@ -11,75 +11,8 @@ namespace Joe3D.ViewControl
     {
         #region Public Properties
 
-        public const string AlphaPropertyName = "Alpha";
-        private double _Alpha = 0.0;
-
-        public double Alpha
-        {
-            get
-            {
-                return _Alpha;
-            }
-
-            set
-            {
-                if (_Alpha == value)
-                {
-                    return;
-                }
-
-                var oldValue = _Alpha;
-                _Alpha = value;
-                RaisePropertyChanged(() => Alpha, oldValue, value, true);
-            }
-        }
-        public const string BetaPropertyName = "Beta";
-        private double _Beta = 0.0;
         private readonly Dispatcher dispatcher = null;
-        public double Beta
-        {
-            get
-            {
-                return _Beta;
-            }
-
-            set
-            {
-                if (_Beta == value)
-                {
-                    return;
-                }
-
-                var oldValue = _Beta;
-                _Beta = value;
-                RaisePropertyChanged(() => Beta, oldValue, value, true);
-            }
-        }
-        public const string ThetaPropertyName = "Theta";
-
-        private double _Theta = 0.0;
-
-        public double Theta
-        {
-            get
-            {
-                return _Theta;
-            }
-
-            set
-            {
-                if (_Theta == value)
-                {
-                    return;
-                }
-
-                var oldValue = _Theta;
-                _Theta = value;
-                RaisePropertyChanged(() => Theta, oldValue, value, true);
-            }
-        }
         public const string DistancePropertyName = "Distance";
-
         private double _Distance = 10D;
 
         public double Distance
@@ -104,7 +37,7 @@ namespace Joe3D.ViewControl
         public const string CurrentModelPropertyName = "CurrentModel";
 
         private Model3D _CurrentModel = Joe3D.Utilities.Generator.GetCube();
-        
+
         public Model3D CurrentModel
         {
             get
@@ -122,13 +55,99 @@ namespace Joe3D.ViewControl
                 var oldValue = _CurrentModel;
                 _CurrentModel = value;
                 RaisePropertyChanged(() => CurrentModel, oldValue, value, true);
-                
+
             }
         }
         public const string LightsPropertyName = "Lights";
 
         private Model3DGroup _Lights = Joe3D.Utilities.Generator.GetLight();
+        /// <summary>
+        /// The <see cref="X" /> property's name.
+        /// </summary>
+        public const string XPropertyName = "X";
 
+        private double _X = 0.0D;
+
+        /// <summary>
+        /// Sets and gets the X property.
+        /// Changes to that property's value raise the PropertyChanged event. 
+        /// </summary>
+        public double X
+        {
+            get
+            {
+                return _X;
+            }
+
+            set
+            {
+                if (_X == value)
+                {
+                    return;
+                }
+
+                _X = value;
+                RaisePropertyChanged(() => X);
+            }
+        }
+        /// <summary>
+        /// The <see cref="Y" /> property's name.
+        /// </summary>
+        public const string YPropertyName = "Y";
+
+        private double _Y = 0.0D;
+
+        /// <summary>
+        /// Sets and gets the Y property.
+        /// Changes to that property's value raise the PropertyChanged event. 
+        /// </summary>
+        public double Y
+        {
+            get
+            {
+                return _Y;
+            }
+
+            set
+            {
+                if (_Y == value)
+                {
+                    return;
+                }
+
+                _Y = value;
+                RaisePropertyChanged(() => Y);
+            }
+        }
+        /// <summary>
+        /// The <see cref="Z" /> property's name.
+        /// </summary>
+        public const string ZPropertyName = "Z";
+
+        private double _Z = 0.0D;
+
+        /// <summary>
+        /// Sets and gets the Z property.
+        /// Changes to that property's value raise the PropertyChanged event. 
+        /// </summary>
+        public double Z
+        {
+            get
+            {
+                return _Z;
+            }
+
+            set
+            {
+                if (_Z == value)
+                {
+                    return;
+                }
+
+                _Z = value;
+                RaisePropertyChanged(() => Z);
+            }
+        }
         /// <summary>
         /// Sets and gets the Lights property.
         /// Changes to that property's value raise the PropertyChanged event. 
@@ -157,9 +176,6 @@ namespace Joe3D.ViewControl
         #region Commands
         private RelayCommand _OpenFile;
 
-        /// <summary>
-        /// Gets the OpenFile.
-        /// </summary>
         public RelayCommand OpenFile
         {
             get
@@ -170,13 +186,6 @@ namespace Joe3D.ViewControl
             }
         }
         private const string OpenFileFilter = "3D model files (*.3ds;*.obj;*.lwo;*.stl)|*.3ds;*.obj;*.objz;*.lwo;*.stl";
-        //private async void ExecuteOpenFile()
-        //{
-        //    var fds = new Joe3D.Utilities.FileDialogService();
-
-        //    var CurrentModelPath = fds.OpenFileDialog("models", null, OpenFileFilter, ".obj");
-        //    this.CurrentModel = await this.LoadAsync(CurrentModelPath, false);
-        //}
         private void ExecuteOpenFile()
         {
             var fds = new Joe3D.Utilities.FileDialogService();
@@ -186,72 +195,6 @@ namespace Joe3D.ViewControl
         }
 
         private bool CanExecuteOpenFile()
-        {
-            return true;
-        }
-        private RelayCommand<double> _SetAlpha;
-        public RelayCommand<double> SetAlpha
-        {
-            get
-            {
-                return _SetAlpha ?? (_SetAlpha = new RelayCommand<double>(
-                    (s) => ExecuteSetAlpha(s),s=>CanExecuteSetAlpha(s)));
-            }
-        }
-
-      
-        private RelayCommand _SetBeta;
-        public RelayCommand SetBeta
-        {
-            get
-            {
-                return _SetBeta ?? (_SetBeta = new RelayCommand(
-                    ExecuteSetBeta,
-                    CanExecuteSetBeta));
-            }
-        }
-
-       
-        private RelayCommand _SetTheta;
-
-        public RelayCommand SetTheta
-        {
-            get
-            {
-                return _SetTheta ?? (_SetTheta = new RelayCommand(
-                    ExecuteSetTheta,
-                    CanExecuteSetTheta));
-            }
-        }
-
-        #endregion
-        #region private Action
-        private void ExecuteSetAlpha(double alpha)
-        {
-            var oldValue = Alpha;
-            this.Alpha = 77.7;
-            RaisePropertyChanged(() => Alpha, oldValue, Alpha, true);
-        }
-
-        private bool CanExecuteSetAlpha(double alpha)
-        {
-            return true;
-        }
-        private void ExecuteSetBeta()
-        {
-
-        }
-
-        private bool CanExecuteSetBeta()
-        {
-            return true;
-        }
-        private void ExecuteSetTheta()
-        {
-
-        }
-
-        private bool CanExecuteSetTheta()
         {
             return true;
         }

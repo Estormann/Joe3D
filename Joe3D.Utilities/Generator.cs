@@ -20,6 +20,11 @@ namespace Joe3D.Utilities
             modelGroup.Children.Add(Cube1);
             return modelGroup;
         }
+        public static Model3D GetObjModel(string model3DPath)
+        {
+            var mi = new Joe3D.Utilities.ModelImporter();
+            return mi.Load(model3DPath);
+        }
         public static Model3DGroup GetLight()
         {
             //Lighting
@@ -82,5 +87,16 @@ namespace Joe3D.Utilities
             return cube;
         }
         
+        public static Matrix3D CalculateRotationMatrix(double x, double y, double z)
+        {
+            Matrix3D matrix = new Matrix3D();
+
+            matrix.Rotate(new Quaternion(new Vector3D(1, 0, 0), x));
+            matrix.Rotate(new Quaternion(new Vector3D(0, 1, 0) * matrix, y));
+            matrix.Rotate(new Quaternion(new Vector3D(0, 0, 1) * matrix, z));
+
+            return matrix;
+        }
+
     }
 }
